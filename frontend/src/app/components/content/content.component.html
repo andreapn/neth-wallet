@@ -1,0 +1,20 @@
+<ng-container *ngIf="account">
+  <div>
+    <button (click)="signOut()">Log out</button>
+    <button (click)="onVerifyOwner()">Verify Owner</button>
+  </div>
+  <address-form
+    [account]="account"
+    [balance]="balance"
+    [currentAmount]="currentAmount"
+    (sendEvent)="send($event)"
+    (focusOutEvent)="validateAddress($event)"
+    (getBalanceEvent)="checkTokenBalance($event)"
+  >  
+  </address-form>
+</ng-container>
+
+<ng-container *ngIf="!accountId">
+  <button (click)="signIn()">Log In</button>
+  <neth-sign-in></neth-sign-in>
+</ng-container>
