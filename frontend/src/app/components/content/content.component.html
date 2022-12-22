@@ -5,11 +5,7 @@
   </div>
   <address-form
     [account]="account"
-    [balance]="balance"
-    [currentAmount]="currentAmount"
-    (sendEvent)="send($event)"
-    (focusOutEvent)="validateAddress($event)"
-    (getBalanceEvent)="checkTokenBalance($event)"
+    [selector]="selector"
   >  
   </address-form>
 </ng-container>

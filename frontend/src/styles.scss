@@ -19,8 +19,8 @@ html {
   background-color: var(--bg);
   color: var(--fg);
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  font-size: calc(.65em + 0.7vw);
-  line-height: 1.3;
+  font-size: calc(.7em + 0.3vw);
+  line-height: 1;
 
   ::selection {
     background: var(--secondary);
@@ -42,7 +42,7 @@ html {
 body {
   margin: 0 auto;
   padding: 0 1em;
-  max-width: 40em;
+  max-width: 30em;
 }
 
 fieldset {
@@ -70,11 +70,23 @@ label {
   color: var(--gray);
 }
 
-button,
-.highlight {
-  border-radius: 5px;
+button {
+  border-radius: 1px;
   border-color: var(--primary);
   border: 0.1em solid var(--primary);
+  padding: 0.5em 1em;
+
+  &:hover,
+  &:focus,
+  &:focus-within {
+    border-color: var(--secondary);
+  }
+}
+
+.highlight {
+  border-radius: 1px;
+  border-color: var(--primary);
+  border: 0.05em solid var(--primary);
   padding: 0.5em 1em;
 
   &:hover,
@@ -97,7 +109,7 @@ input[type="number"] {
   text-align: center;
   border-bottom: 0.1em solid var(--primary);
   margin: 0 1em;
-  width: 4em;
+  width: 10em;
   padding-left: 0.5em;
 
   &:hover,

@@ -1,17 +1,21 @@
-<form (ngSubmit)="onSubmit($event)">
+<form (ngSubmit)="send($event)">
   <fieldset id="fieldset">
     <p>Sign the NETH wallet, {{ account.account_id }}</p>
-    <p>NEAR Balance: {{ balance }}Ⓝ</p>
+    <p>NEAR Balance: {{ this.formatNear(account.amount) }}Ⓝ</p>
+    <p>
+      wNEAR Balance: {{ this.formatNear(this.wNearBalance) }}Ⓝ 
+      <button type="button" (click)="this.withdrawWNear()">Withdraw</button>
+    </p>
     <p class="highlight">
       <label for="address">Destination:</label>
-      <input autoComplete="off" autoFocus id="address" required (focusout)="checkAddress($event)"/>
+      <input autoComplete="off" autoFocus id="address" required (focusout)="callCheckAddress($event)"/>
     </p>
     <p class="highlight">
       <label for="ft_contract">Token Contract:</label>
-      <input id="ft_contract" required (focusout)="getTokenBalance($event)"/>
+      <input autoComplete="off" id="ft_contract" required (focusout)="callGetTokenBalance($event)"/>
     </p>
     <p>
-      Current Amount: {{ currentAmount }}
+      Current Amount: {{ this.formatBalance(this.currentAmount, this.decimals) }}
     </p>
     <p>
       <label for="amount">Amount to send:</label>
@@ -20,9 +24,9 @@
         [defaultValue]="'0'"
         id="amount"
         min="0"
-        step="0.01"
         type="number"
       />
+      <button type="button" (click)="this.setMax()">Max</button>
     </p>
     <button type="submit">Send</button>
   </fieldset>

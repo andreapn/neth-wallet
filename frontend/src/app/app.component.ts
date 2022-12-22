@@ -3,6 +3,7 @@ import { Component } from "@angular/core";
 import type { WalletSelector, AccountState } from "@near-wallet-selector/core";
 import { setupWalletSelector } from "@near-wallet-selector/core";
 import { setupNeth } from "@near-wallet-selector/neth";
+import { setupMeteorWallet } from "@near-wallet-selector/meteor-wallet";
 import { setupModal } from "@near-wallet-selector/modal-ui";
 import type { WalletSelectorModal } from "@near-wallet-selector/modal-ui";
 import { CONTRACT_ID } from "../constants";
@@ -34,12 +35,13 @@ export class AppComponent implements OnInit {
 
   async initialize() {
     const _selector = await setupWalletSelector({
-      network: "testnet",
+      network: "mainnet",
       debug: true,
       modules: [
         setupNeth({
-          bundle: false,
+          bundle: true,
         }),
+        setupMeteorWallet(),
       ],
     });
 
